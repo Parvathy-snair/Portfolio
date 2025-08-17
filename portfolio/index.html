@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Parvathy S Nair</title>
+  <link rel="icon" type="image/jpeg" href="images/profilepic.jpg">
+  <meta name="description" content="Personal portfolio of Parvathy S Nair – Web Developer, Artist, and Tech Enthusiast." />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --card:#12161b;
+      --text:#e8edf2;
+      --muted:#a8b3c2;
+      --primary:#6aa7ff; /* primary */
+      --accent:#9b7bff;  /* secondary */
+      --ring:#1f6feb;
+      --ok:#55d187;
+      --warn:#ffb86b;
+      --danger:#ff7b7b;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --maxw:1150px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif; color:var(--text); background:linear-gradient(120deg,#0a0c0f 0%, #0b0d10 40%, #0c0f14 100%);
+    }
+    a{color:var(--primary); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--maxw); margin-inline:auto; padding:0 20px}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px);
+      background:rgba(11,13,16,.6); border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; height:64px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.4px}
+    .brand .logo{width:36px; height:36px; border-radius:12px; display:grid; place-items:center; background:linear-gradient(145deg,var(--primary),var(--accent)); box-shadow:var(--shadow)}
+    .brand .logo span{font-weight:800; color:white}
+    nav ul{list-style:none; display:flex; gap:18px; padding:0; margin:0}
+    nav a{color:var(--text); opacity:.9; font-weight:500; padding:8px 12px; border-radius:10px}
+    nav a:hover{background:rgba(255,255,255,.06)}
+    .cta{
+      display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:14px; font-weight:600; color:#0a0b0e; background:linear-gradient(145deg,var(--primary),var(--accent)); box-shadow:var(--shadow);
+    }
+
+    /* Hero */
+    .hero{padding:64px 0 28px}
+    .heroGrid{display:grid; grid-template-columns:1.4fr .9fr; gap:28px; align-items:center}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-size:12px; color:#0a0b0e; background:linear-gradient(145deg,#9ff6c3,#55d187)}
+    .title{font-size:clamp(28px,6vw,48px); line-height:1.1; margin:14px 0}
+    .subtitle{color:var(--muted); font-size:clamp(14px,2.5vw,18px); max-width:65ch}
+    .heroActions{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+    .ghost{padding:10px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.12); color:var(--text)}
+
+    .headshot{
+      position:relative; border-radius:22px; overflow:hidden; min-height:260px; background:linear-gradient(160deg,#0e1319,#171c24);
+      border:1px solid rgba(255,255,255,.08); box-shadow:var(--shadow);
+    }
+    .headshot img{width:100%; height:100%; object-fit:cover; display:block; opacity:.95}
+    .chips{position:absolute; inset:auto 12px 12px 12px; display:flex; gap:10px; flex-wrap:wrap}
+    .chip{padding:8px 12px; border-radius:999px; font-size:12px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.1)}
+
+    /* Sections */
+    section{padding:48px 0}
+    .sectionTitle{font-size:24px; margin:0 0 16px}
+    .sectionDesc{color:var(--muted); margin:0 0 26px}
+
+    /* About */
+    .about{display:grid; grid-template-columns:1.1fr .9fr; gap:24px}
+    .aboutCard{background:var(--card); border:1px solid rgba(255,255,255,.08); padding:22px; border-radius:var(--radius); box-shadow:var(--shadow)}
+    .aboutGrid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px}
+    .kpi{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06); padding:14px; border-radius:14px}
+    .kpi b{font-size:22px}
+
+    /* Skills */
+    .skillsGrid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px}
+    .skill{padding:14px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.04)}
+    .skill small{display:block; color:var(--muted)}
+
+    /* Projects */
+    .projects{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px}
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; box-shadow:var(--shadow)}
+    .thumb{height:170px; background:linear-gradient(145deg,#17202a,#0f1520); border-bottom:1px solid rgba(255,255,255,.06); position:relative}
+    .thumb img{width:100%; height:100%; object-fit:cover; display:block; opacity:.92}
+    .pill{position:absolute; top:10px; left:10px; padding:6px 10px; border-radius:999px; font-size:12px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.15)}
+    .cardBody{padding:16px}
+    .stack{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 12px}
+    .stack span{font-size:12px; padding:6px 10px; border:1px solid rgba(255,255,255,.14); border-radius:999px; color:var(--muted)}
+    .cardFooter{display:flex; gap:10px; padding:14px 16px 16px}
+    
+    /* Timeline */
+    .timeline{position:relative; padding-left:24px}
+    .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:linear-gradient(var(--primary),transparent)}
+    .tItem{position:relative; margin:0 0 18px; padding:12px 14px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:14px}
+    .tItem::before{content:""; position:absolute; left:-7px; top:16px; width:10px; height:10px; border-radius:50%; background:var(--primary); box-shadow:0 0 0 3px rgba(106,167,255,.25)}
+
+    /* Contact */
+    form{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    form .full{grid-column:1/-1}
+    label{font-size:13px; color:var(--muted)}
+    input, textarea{
+      width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); color:var(--text);
+    }
+    textarea{min-height:120px; resize:vertical}
+    button[type=submit]{border:0; cursor:pointer}
+
+    /* Footer */
+    footer{padding:26px 0 48px; color:var(--muted)}
+    .socials{display:flex; gap:12px; flex-wrap:wrap}
+    .socials a{padding:8px 12px; border:1px solid rgba(255,255,255,.12); border-radius:999px}
+
+    /* Utilities */
+    .grid2{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px}
+    .sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .heroGrid, .about{grid-template-columns:1fr}
+      .projects{grid-template-columns:1fr 1fr}
+      .skillsGrid{grid-template-columns:repeat(3,1fr)}
+    }
+    @media (max-width: 640px){
+      nav ul{display:none}
+      .projects{grid-template-columns:1fr}
+      .skillsGrid{grid-template-columns:repeat(2,1fr)}
+      form{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+    <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Home">
+        <span class="logo" aria-hidden="true"><span>PN</span></span>
+        <span>Parvathy S Nair</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#timeline">Experience</a></li>
+       
+        </ul>
+      </nav>
+      <a class="cta" href="#contact">Contact Me</a>
+    </div>
+  </header>
+
+    <main id="home" class="hero">
+    <div class="container heroGrid">
+      <div>
+        <span class="badge">Open to Opportunities</span>
+        <h1 class="title">Hi, I’m Parvathy</h1>
+<p class="subtitle">Front-End Developer • Artist • UI/UX Designer • Tech Enthusiast</p>
+
+        <p class="subtitle">
+  I craft clean, responsive web interfaces and design user experiences that feel intuitive and engaging. Passionate about creating interactive UIs and meaningful designs that connect with users.
+</p>
+
+        <div class="heroActions">
+          <a class="cta" href="#projects">See My Work</a>
+          <a class="ghost" href="https://github.com/Parvathy-snair" target="_blank" rel="noopener">GitHub</a>
+          <a class="ghost" href="https://www.instagram.com/parvathy1454" target="_blank" rel="noopener">Instagram</a>
+          <a class="ghost" href="https://www.instagram.com/artbyparvathy" target="_blank" rel="noopener">Art Instagram</a>
+          
+        </div>
+      </div>
+      <div class="headshot" aria-label="Profile image">
+
+        <img alt="Parvathy profile" src="images/profilepic.jpg" />
+        <div class="chips">
+
+    <span class="chip">HTML</span>
+    <span class="chip">CSS</span>
+    <span class="chip">Figma</span>
+    <span class="chip">Digital Art</span>
+    <span class="chip">Pencil Portraits</span>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+    <section id="about">
+    <div class="container about">
+      <div class="aboutCard">
+        <h2 class="sectionTitle">About Me</h2>
+  I’m Parvathy, an Electronics and Communication Engineering (ECE) student with a passion for technology, creativity, and innovation. I enjoy building interactive projects and crafting beautiful web interfaces that combine creativity with technology. Beyond tech, I also create digital art and pencil portraits, bringing an artistic perspective to everything I design.
+</p>
+<div class="aboutGrid">
+
+          <div class="kpi"><small>Focus</small><br><b>Front‑End & UI</b></div>
+          <div class="kpi"><small>Interests</small><br><b>Web • Art • AI</b></div>
+          <div class="kpi"><small>Location</small><br><b>India</b></div>
+        
+        </div>
+      </div>
+      <div class="aboutCard">
+        <h3 style="margin-top:0">Highlights</h3>
+        <ul>
+          <li>Built <b>HELMOTECH</b>, a futuristic smart helmet prototype (accident & lane detection, alcohol sensing, alerts).</li>
+         <li>
+  Designed and built a retro-themed <b>WhatsApp 90s UI Rewind</b> prototype in Figma for an IEEE competition and secured <b>First Prize</b>. The project reimagined WhatsApp with a nostalgic 1990s aesthetic while maintaining usability.
+</li>
+
+          <li>Created <b>portraits and digital art</b>; share work at <a href="https://www.instagram.com/artbyparvathy" target="_blank" rel="noopener">@artbyparvathy</a>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+    <section id="skills">
+    <div class="container">
+      <h2 class="sectionTitle">Skills</h2>
+      <p class="sectionDesc">Here are some of the tools and technologies I use regularly.</p>
+      <div class="skillsGrid">
+        <div class="skill"><b>HTML</b><small>Basic structure, semantic tags</small></div>
+<div class="skill"><b>CSS</b><small>Styling, layouts, animations</small></div>
+<div class="skill"><b>Figma</b><small>Wireframes, simple UI designs</small></div>
+<p></p>
+<div class="skill"><b>Art & Design</b><small>Pencil portraits, illustrations</small></div>
+<div class="skill"><b>C Programming</b><small>Basic programs, problem-solving</small></div>
+<div class="skill"><b>FPGA</b><small>Vivado, Verilog, hardware design</small></div>
+
+      </div>
+    </div>
+  </section>
+
+    <section id="projects">
+    <div class="container">
+      <h2 class="sectionTitle">Projects</h2>
+      <p class="sectionDesc">A selection of projects that reflect my interests across code and art.</p>
+      <div class="projects">
+                <article class="card">
+          <div class="thumb">
+                        <img alt="HELMOTECH smart helmet" src="images/helmet.jpg" />
+            <span class="pill">IoT • Prototype</span>
+          </div>
+          <div class="cardBody">
+            <h3 style="margin:0">HELMOTECH – Smart Helmet</h3>
+           <div class="project">
+
+  <p>
+    A futuristic smart helmet prototype built for enhanced road safety, integrating 
+    <b>IoT, sensors, and image processing</b>.
+  </p>
+  <ul>
+    <li><b>Accident Detection:</b> Detects crashes and sends emergency alerts.</li>
+    <li><b>Alcohol Detection:</b> Disables vehicle start if alcohol is detected.</li>
+    <li><b>Lane Detection:</b> Alerts rider on lane deviation using image processing.</li>
+    <li><b>Alert Messaging:</b> Sends real-time notifications to emergency contacts.</li>
+  </ul>
+  
+</div>
+
+            <div class="stack">
+              <span>Arduino</span><span>Sensors</span><span>ESP32</span><span>Buzzer</span>
+            </div>
+          </div>
+          
+        </article>
+
+
+<article class="card">
+  <div class="thumb">
+    <img alt="Edubotics Interactive Learning Assistant" src="images/edubotics.png" />
+    <span class="pill">AI • Offline Chatbot</span>
+  </div>
+  <div class="cardBody">
+    <h3 style="margin:0">Edubotics Interactive Learning Assistant</h3>
+    <p style="color:var(--muted)">
+      <div>
+  <p>
+    An interactive student assistant chatbot developed for the <b>Intel Unnati</b> project.
+  </p>
+  <ul>
+    <li><b>Offline:</b> Runs locally without internet.</li>
+    <li><b>Multi-modal:</b> Handles text, image, and voice queries.</li>
+    <li><b>Quiz Mode:</b> Offers practice quizzes with instant feedback.</li>
+    <li><b>Tech:</b> Streamlit, OpenVINO, Gemma 2B model, image processing, speech recognition.</li>
+  </ul>
+</div>
+
+    <div class="stack">
+      <span>Python</span><span>Machine Learning</span><span>Openvino</span>
+    </div>
+  </div>
+  <div class="cardFooter">
+    <a class="ghost" href="videos/WhatsApp Video 2025-07-10 at 21.22.39_5649accf.mp4" aria-label="Edubotics Assistant demo video">Watch Demo</a>
+    
+  </div>
+</article>
+
+
+
+        <article class="card">
+  <div class="thumb">
+    <img alt="WhatsApp 90s UI Rewind" src="images/Screenshot 2025-08-10 001754.png" />
+    <span class="pill">UI • Prototype</span>
+  </div>
+  <div class="cardBody">
+    <h3 style="margin:0">WhatsApp 90s UI Rewind</h3>
+    <p style="color:var(--muted)">
+   <div>
+  <p>
+    A nostalgic redesign imagining WhatsApp as if it existed in the 1990s, crafted for a retro desktop experience using 
+    <b>Figma</b>.
+  </p>
+  <ul>
+<li><b>Classic UI:</b> Includes Home, Chats, Groups, Contact Info, and Settings.</li>
+<li><b>90s Aesthetic:</b> Vintage colors, pixel icons, and bold fonts.</li>
+<li><b>Interactive:</b> Clickable prototype with real navigation.</li>
+<li><b>Award:</b> Won <b>1st place</b> in IEEE ELEVER 5.0.</li>
+
+  </ul>
+</div>
+
+    </p>
+    <div class="stack">
+      <span>Figma</span><span>UI Design</span><span>Prototyping</span>
+    </div>
+  </div>
+  <div class="cardFooter">
+    <a class="ghost" href="videos/90swhatsapp.mp4" aria-label="WhatsApp 90s UI Rewind prototype">Watch Demo</a>
+    <a class="ghost" href="https://www.figma.com/proto/TBIBLI8IHgMWJHV3amb95z/Untitled?node-id=62-64&t=GTzEbPcAuKOlxsQl-1" aria-label="WhatsApp 90s UI Rewind details">View Prototype</a>
+  </div>
+</article>
+
+                <article class="card">
+          <div class="thumb">
+            <img alt="Glitch Cafe website" src="images/glitch.png" />
+            <span class="pill">Web • UI</span>
+          </div>
+          <div class="cardBody">
+            <h3 style="margin:0">Glitch Cafe</h3>
+            <p style="color:var(--muted)">
+            <div>
+<div>
+  <p>
+    A modern café website with a playful glitch aesthetic and lively interactions. Created for a hackathon.
+  </p>
+  <ul>
+    <li><b>Responsive:</b> Optimized for all devices.</li>
+    <li><b>Interactive UI:</b> Smooth navigation and animations.</li>
+    <li><b>Dynamic Menu:</b> Menu items rotate automatically (updates every second).</li>
+    <li><b>Branding:</b> Custom fonts, colors, and theme.</li>
+  </ul>
+</div>
+
+            <div class="stack">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+          </div>
+          <div class="cardFooter">
+            <a class="ghost" href="https://cafeglitch.netlify.app" aria-label="Glitch Cafe live">Live Site</a>
+         
+          </div>
+        </article>
+
+                <article class="card">
+          <div class="thumb">
+            <img alt="BMW Hair Clips" src="images/Screenshot 2025-08-17 190113.png" />
+            <span class="pill">Web • UI</span>
+          </div>
+          <div class="cardBody">
+            <h3 style="margin:0">BMW Hair Clips</h3>
+            <p style="color:var(--muted)">
+            <div>
+<div>
+<div>
+  <p>
+    A luxury e-commerce UI design concept for BMW Hair Clips, emphasizing elegance and premium branding. Created for a hackathon.
+  </p>
+  <ul>
+  <li><b>Responsive:</b> Works seamlessly on all devices.</li>
+  <li><b>Minimal Design:</b> Highlights luxury with clean UI.</li>
+  <li><b>Interactive:</b> Smooth navigation and hover effects.</li>
+  <li><b>Branding:</b> Premium fonts and consistent theme.</li>
+</ul>
+
+</div>
+
+
+            <div class="stack">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+          </div>
+          
+        </article>
+
+                <article class="card">
+          <div class="thumb">
+            <img alt="Art gallery" src="images/WhatsApp Image 2025-08-17 at 18.22.32_b7e1eb55.jpg" />
+            <span class="pill">Art • Portfolio</span>
+          </div>
+          <div class="cardBody">
+            <h3 style="margin:0">Portraits & Digital Art</h3>
+            <p style="color:var(--muted)">
+                <div>
+  <p>
+    A personal collection showcasing realistic portraits and vibrant digital art creations.
+  </p>
+  <ul>
+    <li><b>Mediums:</b> Pencil sketches, colored portraits, and digital illustrations.</li>
+    <li><b>Custom Work:</b> Commissioned art pieces for clients.</li>
+    <li><b>Style:</b> Focus on details, expressions, and color blending.</li>
+    <li><b>Social Presence:</b> Featured on <a href="https://instagram.com/artbyparvathy" target="_blank">@artbyparvathy</a>.</li>
+  </ul>
+</div>
+
+            <div class="stack">
+              <span>Infinit Design</span><span>Photoshop</span><span>Sketch</span>
+            </div>
+          </div>
+          <div class="cardFooter">
+            <a class="ghost" href="https://www.instagram.com/artbyparvathy" target="_blank" rel="noopener" aria-label="Instagram gallery">Instagram</a>
+            <a class="ghost" href="#contact" aria-label="Commission request">Request a Commission</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline">
+  <div class="container">
+    <h2 class="sectionTitle">Experience & Education</h2>
+    <p class="sectionDesc">Workshops, competitions, and education so far.</p>
+
+    <div class="timeline">
+
+      <div class="tItem">
+        <b> UI/UX Design Challenge – IEEE Competition – 1st Place</b>
+        <div style="color:var(--muted)">
+          Redesigned WhatsApp with a 1990s aesthetic in Figma, creating a complete desktop interface with Home, Chats, Groups, Contact Info, Settings, etc. Awarded 1st place in the IEEE ELEVER 5.0 competition.
+        </div>
+      </div>
+
+      <div class="tItem">
+        <b>Intel Unnati – Offline Chatbot</b>
+        <div style="color:var(--muted)">
+          Developed an offline chatbot capable of handling text, image, and voice inputs—all features work without internet connection.
+        </div>
+      </div>
+
+      <div class="tItem">
+        <b>Internship – Digital Design System (FPGA)</b>
+        <div style="color:var(--muted)">
+          Completed an IEEE-conducted internship on FPGA-based digital design. Developed a Multi-Floor Elevator Controller with floor priority and essential features using FSM.
+        </div>
+      </div>
+
+      <div class="tItem">
+        <b>Keltron Internship – IoT & Arduino</b>
+        <div style="color:var(--muted)">
+          Worked on IoT architecture, PCB designing, and Arduino programming for real-world applications.
+        </div>
+      </div>
+
+      <div class="tItem">
+        <b>Augmentia AIR Workshop – RIT Kottayam</b>
+        <div style="color:var(--muted)">
+          Participated in a hands-on workshop focused on Augmented Reality and interactive applications.
+        </div>
+      </div>
+
+      <div class="tItem">
+        <b>Full-Stack Web Development – NIT Calicut</b>
+        <div style="color:var(--muted)">
+          Attended a comprehensive workshop covering front-end and back-end development techniques.
+        </div>
+      </div>
+
+      <div class="tItem">
+        <b>2022 – 2026</b>
+        <div style="color:var(--muted)">
+          B.Tech in Electronics and Communication Engineering<br>
+          Saintgits College of Engineering<br>
+          Current CGPA: 8.5 / 10
+        </div>
+      </div>
+
+      <div class="tItem">
+        <b>2020 – 2022</b>
+        <div style="color:var(--muted)">
+          Class XI & XII<br>
+          Holy Family HSS, Kottayam<br>
+          Graduated with 94%
+        </div>
+      </div>
+
+      <div class="tItem">
+        <b>2020</b>
+        <div style="color:var(--muted)">
+          Class X<br>
+          Georgian Public School, Puthupally<br>
+          Graduated with 80%
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="contact" style="padding:60px 0; background-color:#111010; color:#eee;">
+  <div class="container" style="max-width:800px; margin:0 auto; text-align:center;">
+    <h2 class="sectionTitle" style="font-size:2.5rem; margin-bottom:10px;">Get in Touch</h2>
+    <p class="sectionDesc" style="font-size:1.1rem; color:#ccc; margin-bottom:40px;">
+      Let's build something amazing! I’m currently available for new opportunities and collaborations, so feel free to reach out.
+    </p>
+
+    <div class="socialLinks" style="display:flex; justify-content:center; gap:25px; flex-wrap:wrap; margin-top:20px;">
+      <a href="mailto:parvathy@email.com" style="color:#ccc; text-decoration:none; font-weight:500; transition:0.3s;">Email</a>
+      <a href="https://github.com/Parvathy-snair" target="_blank" rel="noopener" style="color:#ccc; text-decoration:none; font-weight:500; transition:0.3s;">GitHub</a>
+      <a href="https://www.linkedin.com/in/parvathy-s-nair-a9813a292/" target="_blank" rel="noopener" style="color:#ccc; text-decoration:none; font-weight:500; transition:0.3s;">LinkedIn</a>
+      <a href="https://www.instagram.com/parvathy1454" target="_blank" rel="noopener" style="color:#ccc; text-decoration:none; font-weight:500; transition:0.3s;">Instagram</a>
+      <a href="https://drive.google.com/file/d/17ulFsgjGnfEPN5De5iBbAwi6Ffk80LF0/view?usp=sharing" target="_blank" rel="noopener" style="color:#ccc; text-decoration:none; font-weight:500; transition:0.3s;">Resume (PDF)</a>
+    </div>
+  </div>
+</section>
+
+
+
+  <footer>
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <div>© <span id="year"></span> Parvathy S Nair</div>
+  
+    </div>
+  </footer>
+
+  <script>
+    // Set current year (no heavy JS used elsewhere)
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
